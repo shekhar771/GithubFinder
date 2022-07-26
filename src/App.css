@@ -70,6 +70,11 @@ img {
   text-align: center;
 }
 
+.centerImg {
+  alignSelf: center;
+
+}
+
 .text-primary {
   color: var(--primary-color);
 }

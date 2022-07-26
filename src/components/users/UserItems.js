@@ -1,18 +1,19 @@
-import React, { Component } from 'react';
-import PropTypes from 'prop-types';
-
-class UserItems extends Component {
-  state = {
-    id: 'id',
-    user: 'mojombo',
-    avatar_url: 'https://avatars.githubusercontent.com/u/1?v=4',
-    html_url: 'https://github.com/mojombo',
-  };
-  static propTypes = {};
-
-  render() {
-    return <div>UserItems</div>;
-  }
-}
+import React from 'react';
+const UserItems = ({ user: { id, login, avatar_url, html_url } }) => {
+  return (
+    <div className='card text-center'>
+      <img
+        src={avatar_url}
+        alt='imagqe'
+        className='round-img  centerImg'
+        style={{ width: '60px' }}
+      />
+      <h3> {login}</h3>
+      <a href={html_url} className='btn btn-dark btn-sm my-1'>
+        Github
+      </a>
+    </div>
+  );
+};
 
 export default UserItems;
