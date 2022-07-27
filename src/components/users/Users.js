@@ -1,23 +1,24 @@
 import React from 'react';
-import UserItems from './UserItems';
-import spiner from '../layouts/spiner';
+import UserItem from './UserItems';
 
-let Users = ({ users, loading }) => {
-  // if (loading) {
-  //    <spiner />
+const Users = (props) => {
+  // if (condition) {
   // } else {
-  <div style={userStyle}>
-    {users.map((user) => (
-      <UserItems key={user.id} user={user} />
-    ))}
-  </div>;
+  // }
+  return (
+    <div style={userStyle}>
+      {props.users.map((user) => (
+        <UserItem key={user.id} user={user} />
+      ))}
+    </div>
+  );
 };
-// };
 
-let userStyle = {
+const userStyle = {
   display: 'grid',
-  // gridTemplateColumns: 'repeat(3, 1fr)',
-  // gridGap: '1rem',
-  // textAlign: 'center',
+  gridTemplateColumns: 'repeat(3, 1fr)',
+  gridGap: '1rem',
+  textAlign: 'center',
 };
+
 export default Users;
