@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 
 export class Search extends Component {
   state = {
@@ -31,6 +32,10 @@ export class Search extends Component {
             className='btn btn-dark btn-block'
           />
         </form>
+
+        <button className='btn btn-light btn-block' onClick={ClearUsers}>
+          delete
+        </button>
       </div>
     );
   }
