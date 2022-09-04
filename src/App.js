@@ -3,6 +3,9 @@ import Navbar from './components/layouts/Navbar';
 import Users from './components/users/Users';
 import Search from './components/users/Search';
 import Alert from './components/layouts/Alert';
+import About from './components/page/about';
+import User from './components/users/User';
+import Coms from './coms';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import axios from 'axios';
 import './App.css';
@@ -10,6 +13,7 @@ import './App.css';
 class App extends Component {
   state = {
     users: [],
+    user: {},
     loading: false,
     alert: null,
   };
@@ -23,6 +27,14 @@ class App extends Component {
     );
 
     this.setState({ users: res.data.items, loading: false });
+  };
+  //searching a single user
+  getUser = async (username) => {
+    const res = await axios.get(
+      `https://api.github.com/users/${username}?client_id=${process.env.REACT_APP_GITHUB_CLIENT_ID}&client_secret=${process.env.REACT_APP_GITHUB_CLIENT_SECRET}`
+    );
+
+    this.setState({ user: res.data, loading: false });
   };
   //setting a alert
   setAlert = (msg, type) => {
@@ -57,6 +69,12 @@ class App extends Component {
                     />
                   </Fragment>
                 }
+              />
+              <Route exact path='/about' element={<About />} />
+              <Route
+                exact
+                path='/user/:login'
+                element={<User getUser={this.getUser} user={this.state.user} />}
               />
             </Routes>
           </div>

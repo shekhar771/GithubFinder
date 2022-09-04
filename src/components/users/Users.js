@@ -1,11 +1,11 @@
 import React from 'react';
 import UserItems from './UserItems';
-import Spiner from '../layouts/spiner';
+import Spinner from '../layouts/Spinner';
 import PropTypes from 'prop-types';
 
 const Users = ({ users, loading }) => {
   if (loading === true) {
-    return <Spiner />;
+    return <Spinner />;
   } else {
     return (
       <div style={userStyle}>
