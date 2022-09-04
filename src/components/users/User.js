@@ -1,4 +1,5 @@
-import React, { Component } from 'react';
+import React, { Component, Fragment } from 'react';
+import { Link } from 'react-router-dom';
 
 export class User extends Component {
   componentDidMount() {
@@ -23,7 +24,20 @@ export class User extends Component {
       hireable,
       name,
     } = this.props.user;
-    return <div>{this.name}</div>;
+    const { loading } = loading;
+    return (
+      <Fragment>
+        <Link to='/' className='btn btn-light'>
+          back to search
+        </Link>
+        hireable:{' '}
+        {hireable ? (
+          <i className='fas fa-check text-success' />
+        ) : (
+          <i className='fas fa-times-circle text-danger ' />
+        )}
+      </Fragment>
+    );
   }
 }
 
